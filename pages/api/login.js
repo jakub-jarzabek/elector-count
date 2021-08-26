@@ -1,17 +1,19 @@
-import {NextApiRequest, NextApiResponse} from "next";
+import {NextApiRequest, NextApiResponse} from 'next';
 import jwt from 'jsonwebtoken';
+
 
 const KEY = 'drthdrthdthdthdthdhdsfsd'
 
-export default function (NextApiRequest,NextApiResponse) {
-    if(!NextApiRequest.body) {
-        NextApiResponse.statusCode = 404
-        NextApiResponse.end('Error')
+export default function handler(req, res) {
+
+    if(!req.body) {
+        res.statusCode = 404
+        res.end('Error')
         return
     }
-    const {username, password} = NextApiRequest.body
+    const {username, password} = req.body
 
-    NextApiResponse.json({
+    res.json({
         token: jwt.sign({
             username
         }, KEY)
