@@ -1,0 +1,58 @@
+//Imports
+@import 'mixins';
+@import 'variables';
+
+//Styles
+.LoginForm {
+  width: 80%;
+  z-index: 2;
+  @include center-absolute;
+  display: flex;
+  flex-direction: column;
+  label {
+    margin-left: 1px;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    color: $violet-darkest;
+    font-weight: 700;
+  }
+  input {
+    color: $violet-darkest;
+    box-shadow: 0 0 10px $violet-darkest;
+    font-size: 16px;
+    line-height: 22px;
+    margin-bottom: 10px;
+    border: $violet-darkest;
+    border-radius: 5px;
+    background-color: #ffe9ec;
+  }
+  button {
+    border-radius: 10px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    width: 100px;
+    padding: 2px;
+    // width: fit-content;
+    align-self: center;
+    border-color: $violet-darkest;
+    color: $violet-darkest;
+    letter-spacing: 2px;
+    background: linear-gradient(
+      270deg,
+      $pink-darkest 0%,
+      $pink-base 70%,
+      $pink-lightest 100%
+    );
+    cursor: pointer;
+    transition: 1s;
+    background-size: 200px 1px;
+    border-width: 2px;
+    box-shadow: 0 0 10px $violet-darkest;
+  }
+  button:hover {
+    background-position: -100px;
+  }
+}
