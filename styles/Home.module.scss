@@ -1,0 +1,28 @@
+// Imports
+@import 'variables';
+@import 'mixins';
+
+// Styles
+.SignInBtn {
+  font-size: 20px;
+  padding: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  @include center-absolute;
+  border-color: $violet-darkest;
+  color: $violet-darkest;
+  background: linear-gradient(
+    270deg,
+    $pink-darkest 0%,
+    $pink-base 70%,
+    $pink-lightest 100%
+  );
+  cursor: pointer;
+  transition: 1s;
+  background-size: 200px 1px;
+  border-width: 2px;
+  box-shadow: 0 0 10px $violet-darkest;
+}
+.SignInBtn:hover {
+  background-position: -80px;
+}
