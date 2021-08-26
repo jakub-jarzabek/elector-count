@@ -1,5 +1,13 @@
+@import './variables';
 html,
 body {
+  background: linear-gradient(
+    180deg,
+    $violet-darkest 0%,
+    $violet-base 40%,
+    $middle-color 100%
+  );
+  height: 100vh;
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,

@@ -1,3 +1,6 @@
+//Imports
+@import 'variables';
+
 // Variables
 
 // Mixins
@@ -6,31 +9,65 @@
 }
 
 @mixin center-absolute {
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
 }
 
 // Styles
-.PhoneWrapper {
-  margin: 20px;
-  width: 300px;
-  height: 600px;
-}
 
 .PhoneCase {
+  margin: auto;
+  box-shadow: 0 0 20px $pink-light;
+  -webkit-box-shadow: 0 0 20px $pink-light;
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 300px;
+  height: 600px;
   background-color: black;
   @include phone-border-radius;
 }
 
 .PhoneScreen {
-  position: absolute;
+  background-image: linear-gradient(
+    217deg,
+    $violet-darkest 0%,
+    $middle-color 19%,
+    $pink-base 50%,
+    #dddddd 100%
+  );
   width: 98%;
   height: 98%;
-  background: grey;
+  // background: grey;
+  backdrop-filter: blur(40px) saturate(20%);
+  -webkit-backdrop-filter: blur(40px) saturate(27%);
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  @include center-absolute;
   @include phone-border-radius;
-  @include center-absolute();
+}
+.PhoneNotch {
+  position: absolute;
+  background-color: black;
+  z-index: 1;
+  width: 50%;
+  height: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 0 0 15px 15px;
+}
+.Speaker {
+  width: 45px;
+  height: 5px;
+  border-radius: 2px;
+  background-color: #222222;
+  @include center-absolute;
+}
+.Camera {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: #131313;
+  @include center-absolute;
+  left: 80%;
 }
