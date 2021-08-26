@@ -1,20 +1,40 @@
-import Phone from "../components/Phone";
 import React, {SyntheticEvent, useState} from 'react';
-import {getCsrfToken} from "next-auth/client";
-
+import {csrfToken, getCsrfToken} from "next-auth/client";
+import Phone from '../components/Phone'
+import { useRouter } from 'next/router'
+import styles from '../styles/Login.module.scss'
 
 export default function SignIn({csrfToken}) {
 
-
-
     return (
-        <form method='post' action='/api/auth/callback/credentials'>
-            <input name='csrfToken' type='hidden' defaultValue={csrfToken}/>
-            <input type="text" className="form-control"  placeholder="Username" required />
-            <input type="password" className="form-control" placeholder="Password" required   />
-            <button className="w-100 btn btn-lg btn-primary" type="submit" >Log in</button>
-        </form>
+        <Phone>
+            <form className={styles.LoginForm} method='post' action='/api/auth/callback/credentials'>
+                <input name='csrfToken' type='hidden' defaultValue={csrfToken}/>
+                <label htmlFor="loginInput">Login:</label>
+                <input
+                    id="loginInput"
+                    type="text"
+                    className="form-control"
+                    Required
+                />
+                <label htmlFor="passwordInput">Password:</label>
+                <input
+                    id="passwordInput"
+                    type="password"
+                    className="form-control"
+                    required
+                />
+                <button
+                    className="w-100 btn btn-lg btn-primary"
+                    type="submit"
+                >
+                    Login
+                </button>
+            </form>
+        </Phone>
     )
+
+
 }
 
 export async function getServerSideProps(context){
@@ -24,4 +44,9 @@ export async function getServerSideProps(context){
         }
     }
 }
+
+
+
+
+
 
