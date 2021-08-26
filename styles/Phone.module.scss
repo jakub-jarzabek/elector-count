@@ -1,0 +1,36 @@
+// Variables
+
+// Mixins
+@mixin phone-border-radius {
+  border-radius: 45px;
+}
+
+@mixin center-absolute {
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+// Styles
+.PhoneWrapper {
+  margin: 20px;
+  width: 300px;
+  height: 600px;
+}
+
+.PhoneCase {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  @include phone-border-radius;
+}
+
+.PhoneScreen {
+  position: absolute;
+  width: 98%;
+  height: 98%;
+  background: grey;
+  @include phone-border-radius;
+  @include center-absolute();
+}
