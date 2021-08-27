@@ -1,14 +1,28 @@
 import Phone from '../components/Phone'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Message from '../components/Message'
 import styles from '../styles/Messages.module.scss'
 import { getSession } from 'next-auth/client'
-const Messages = () => {
+import axios from 'axios'
+const Messages = ({ messages }) => {
+  useEffect(() => {
+    console.log(messages)
+  }, [])
+  const messagesToRender = messages.map((message) => {
+    /* prettier-ignore */
+    return(
+    <Message
+      key={message._id}
+      content={message.content}
+      date={message.date}
+      author={message.author}
+    />
+    )
+  })
+
   return (
     <Phone>
-      <div className={styles.MessagesWrapper}>
-        <Message />
-      </div>
+      <div className={styles.MessagesWrapper}>{messagesToRender}</div>
       <div className={styles.UserControl}>
         <textarea />
       </div>
@@ -26,9 +40,11 @@ export async function getServerSideProps(context) {
       },
     }
   }
-
+  const response = await axios.get(`${process.env.BASE_URL}/api/messages`)
+  const messages = response.data
+  console.log(messages)
   return {
-    props: { session },
+    props: { session, messages },
   }
 }
 
