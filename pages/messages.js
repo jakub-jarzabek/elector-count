@@ -3,12 +3,19 @@ import React from 'react'
 import Message from '../components/Message'
 import styles from '../styles/Messages.module.scss'
 import { getSession } from 'next-auth/client'
-const Messages = () => {
+const Messages = ({ messages }) => {
+  const messagesToRender = messages.map((message) => {
+    ;<Message
+      key={message._id}
+      content={message.content}
+      date={message.date}
+      author={message.author}
+    />
+  })
+
   return (
     <Phone>
-      <div className={styles.MessagesWrapper}>
-        <Message />
-      </div>
+      <div className={styles.MessagesWrapper}>{messagesToRender}</div>
       <div className={styles.UserControl}>
         <textarea />
       </div>
@@ -17,6 +24,8 @@ const Messages = () => {
 }
 export async function getServerSideProps(context) {
   const session = await getSession({ req: context.req })
+
+  const messages = await axios.get('/api/messages')
 
   if (!session) {
     return {
@@ -28,7 +37,7 @@ export async function getServerSideProps(context) {
   }
 
   return {
-    props: { session },
+    props: { session, messages },
   }
 }
 
