@@ -5,6 +5,7 @@ import React from 'react'
 import Link from 'next/link'
 import { signIn, signOut, useSession } from 'next-auth/client'
 import Phone from '../components/Phone'
+import router, { useRouter } from 'next/router'
 
 export default function Home() {
   const [session, loading] = useSession()
@@ -13,7 +14,7 @@ export default function Home() {
       {!session && (
         <>
           <Phone>
-            <button onClick={signIn} className={styles.SignInBtn}>
+            <button onClick={() => router.replace('/login')} className={styles.SignInBtn}>
               Sign In
             </button>
           </Phone>
