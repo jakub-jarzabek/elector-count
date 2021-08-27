@@ -14,13 +14,16 @@ export default function Home() {
       {!session && (
         <>
           <Phone>
-            <button onClick={() => router.replace('/login')} className={styles.SignInBtn}>
+            <button
+              onClick={() => router.replace('/login')}
+              className={styles.SignInBtn}
+            >
               Sign In
             </button>
           </Phone>
         </>
       )}
-      {session && <Phone />}
+      {session ? () => router.replace('/messages') : null}
     </>
   )
 }
