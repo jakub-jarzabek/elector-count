@@ -1,10 +1,16 @@
-import React, { useState, useRef } from 'react'
-import { signIn } from 'next-auth/client'
+import React, {useState, useRef, useEffect} from 'react'
+import {signIn, useSession} from 'next-auth/client'
 import Phone from '../components/Phone'
 import router, { useRouter } from 'next/router'
 import styles from '../styles/Login.module.scss'
 
 export default function Login() {
+  const [session, loading] = useSession()
+  useEffect(() => {
+    if (session) {
+      router.replace('/messages')
+    }
+  }, [session])
   const emailInputRef = useRef()
   const passwordInputRef = useRef()
   async function handleSubmit(event) {
