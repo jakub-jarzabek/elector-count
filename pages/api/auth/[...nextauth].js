@@ -1,27 +1,34 @@
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
 
-const options = {
-    providers: [
-        Providers.Credentials({
-            name: "Elector Count Provider",
-            credentials: {
-                username: {label: "Username", type: "text", placeholder:"Karl Franz"},
-                password: {label: "Password", type: "password"}
-            },
-            async authorize(credentials){
-                const user = {name: "Karl Franz", username: "Karl Franz"}
-                return user
-            }
+export default NextAuth({
+  // Jwt configaration
+  session: {
+    jwt: true,
+  },
+  // Provider configaration
+  providers: [
+    Providers.Credentials({
+      async authorize(credentials) {
+        const client = await MongoClient.connect(process.env.DB_CONNECTION, {
+          useNewUrlParser: true,
+          useUnifiedTopology: true,
         })
-    ],
-    session: {
-        jwt: true,
-
-    },
-    pages: {
-        signIn: '../../login'
-    }
-}
-
-    export default (req, res) => NextAuth(req, res, options);
+        const users = await client.db().collection('users')
+        const result = await users.findOne({
+          email: credentials.email,
+        })
+        if (!result) {
+          client.close()
+          throw new Error('No user with the email')
+        }
+        if (credentials.password !== result.password) {
+          client.close()
+          throw new Error('Password doesnt match')
+        }
+        client.close()
+        return { email: result.email }
+      },
+    }),
+  ],
+})
