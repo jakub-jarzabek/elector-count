@@ -5,15 +5,20 @@ import router, { useRouter } from 'next/router'
 import styles from '../styles/Login.module.scss'
 
 export default function Login() {
+  const emailInputRef = useRef()
+  const passwordInputRef = useRef()
   async function handleSubmit(event) {
+    event.preventDefault()
     const enteredEmail = emailInputRef.current.value
     const enteredPassword = passwordInputRef.current.value
 
+    console.log(enteredEmail + '   ' + enteredPassword)
     const result = await signIn('credentials', {
       redirect: false,
       email: enteredEmail,
       password: enteredPassword,
     })
+    console.log(result)
     if (!result.error) {
       router.replace('/messages')
     }

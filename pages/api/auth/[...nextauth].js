@@ -1,5 +1,6 @@
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
+import { MongoClient } from 'mongodb'
 
 export default NextAuth({
   // Jwt configaration
@@ -10,6 +11,7 @@ export default NextAuth({
   providers: [
     Providers.Credentials({
       async authorize(credentials) {
+        console.log('authorize')
         const client = await MongoClient.connect(process.env.DB_CONNECTION, {
           useNewUrlParser: true,
           useUnifiedTopology: true,
@@ -18,6 +20,7 @@ export default NextAuth({
         const result = await users.findOne({
           email: credentials.email,
         })
+        console.log(await result)
         if (!result) {
           client.close()
           throw new Error('No user with the email')
@@ -31,4 +34,5 @@ export default NextAuth({
       },
     }),
   ],
+  // pages: { signIn: '../../login.js' },
 })
