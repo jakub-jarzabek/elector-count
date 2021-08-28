@@ -9,6 +9,7 @@ import Header from '../components/Header'
 export default function Home() {
   const [session, loading] = useSession()
   useEffect(() => {
+    console.log(session)
     if (session) {
       router.replace('/messages')
       axios.get('/api/messages').then((response) => console.log(response.data))
