@@ -13,7 +13,7 @@ const Messages = ({ messages, session }) => {
           setMessagesState(response.data)
         }
       })
-    }, 5000)
+    }, 10000)
     return () => clearInterval(interval)
   }, [])
   const [messagesState, setMessagesState] = useState(messages)
@@ -38,7 +38,7 @@ const Messages = ({ messages, session }) => {
 
   const [message, setMessage] = useState()
   const handleSubmit = (event) => {
-    if (messsage !== '') {
+    if (message !== '') {
       event.preventDefault()
       const data = {
         author: session.user.email,
