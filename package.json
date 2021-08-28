@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@jh3y/whirl": "^2.0.0",
     "axios": "^0.21.1",
     "dot-env": "^0.0.1",
     "express": "^4.17.1",

@@ -1,24 +1,27 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { signIn, useSession } from 'next-auth/client'
 import Phone from '../components/Phone'
 import router from 'next/router'
 import styles from '../styles/Login.module.scss'
 import Header from '../components/Header'
+
 export default function Login() {
   const [session, loading] = useSession()
+  const [display, setDisplay] = useState('none')
   useEffect(() => {
     if (session) {
       router.replace('/messages')
     }
   }, [session])
+
   const emailInputRef = useRef()
   const passwordInputRef = useRef()
+
   async function handleSubmit(event) {
     event.preventDefault()
+    setDisplay('flex')
     const enteredEmail = emailInputRef.current.value
     const enteredPassword = passwordInputRef.current.value
-
-    console.log(enteredEmail + '   ' + enteredPassword)
     const result = await signIn('credentials', {
       redirect: false,
       email: enteredEmail,
@@ -27,6 +30,7 @@ export default function Login() {
     console.log(result)
     if (!result.error) {
       router.replace('/messages')
+      setDisplay('none')
     }
   }
   return (
@@ -45,6 +49,7 @@ export default function Login() {
           />
           <button type="submit">Login</button>
         </form>
+        <div className="double-up container" style={{ display }} />
       </Phone>
     </div>
   )

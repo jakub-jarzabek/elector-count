@@ -1,0 +1,22 @@
+@import 'mixins';
+@import '_variables';
+
+.LogoutBtn {
+  z-index: 2;
+  top: 2%;
+  left: 82%;
+  border-radius: 50%;
+  padding: 5px;
+  border-color: $violet-darkest;
+  color: $violet-darkest;
+  background: linear-gradient(
+    270deg,
+    $pink-darkest 0%,
+    $pink-base 70%,
+    $pink-lightest 100%
+  );
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}

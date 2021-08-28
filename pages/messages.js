@@ -5,6 +5,8 @@ import styles from '../styles/Messages.module.scss'
 import { getSession } from 'next-auth/client'
 import axios from 'axios'
 import Header from '../components/Header'
+import Logout from '../components/Logout'
+
 const Messages = ({ messages, session }) => {
   useEffect(() => {
     const interval = setInterval(() => {
@@ -72,10 +74,14 @@ const Messages = ({ messages, session }) => {
     <div className="CenterDiv">
       <Header />
       <Phone>
+        <Logout />
         <div className={styles.MessagesWrapper}>{messagesToRender}</div>
         <div className={styles.UserControl}>
           <form onSubmit={handleSubmit}>
-            <textarea onChange={(e) => setMessage(e.target.value)} />
+            <textarea
+              onChange={(e) => setMessage(e.target.value)}
+              value={message}
+            />
             <button type="submit">Send</button>
           </form>
           <button onClick={deleteAllMessages} className={styles.Delete}>
