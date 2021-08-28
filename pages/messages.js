@@ -6,16 +6,16 @@ import { getSession } from 'next-auth/client'
 import axios from 'axios'
 import Header from '../components/Header'
 const Messages = ({ messages, session }) => {
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     axios.get('/api/messages').then((response) => {
-  //       if (response.data !== messagesState) {
-  //         setMessagesState(response.data)
-  //       }
-  //     })
-  //   }, 5000)
-  //   return () => clearInterval(interval)
-  // }, [])
+  useEffect(() => {
+    const interval = setInterval(() => {
+      axios.get('/api/messages').then((response) => {
+        if (response.data !== messagesState) {
+          setMessagesState(response.data)
+        }
+      })
+    }, 5000)
+    return () => clearInterval(interval)
+  }, [])
   const [messagesState, setMessagesState] = useState(messages)
   const messagesToRender = messagesState.map((message) => {
     /* prettier-ignore */
@@ -38,26 +38,28 @@ const Messages = ({ messages, session }) => {
 
   const [message, setMessage] = useState()
   const handleSubmit = (event) => {
-    event.preventDefault()
-    const data = {
-      author: session.user.email,
-      content: message,
-      date: new Date(),
-    }
-    axios.post('/api/messages', data).then((response) => {
-      if (response) {
-        setMessagesState((prevState) => [
-          {
-            author: data.author,
-            content: data.content,
-            date: data.content,
-            _id: response.data,
-          },
-          ...prevState,
-        ])
+    if (messsage !== '') {
+      event.preventDefault()
+      const data = {
+        author: session.user.email,
+        content: message,
+        date: new Date(),
       }
-    })
-    setMessage('')
+      axios.post('/api/messages', data).then((response) => {
+        if (response) {
+          setMessagesState((prevState) => [
+            {
+              author: data.author,
+              content: data.content,
+              date: data.content,
+              _id: response.data,
+            },
+            ...prevState,
+          ])
+        }
+      })
+      setMessage('')
+    }
   }
   const deleteAllMessages = () => {
     axios.post('/api/wipe').then((response) => {
