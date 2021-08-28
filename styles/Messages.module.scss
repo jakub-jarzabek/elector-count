@@ -30,8 +30,9 @@
   textarea {
     margin: 0;
     @include center-absolute;
+    top: 40%;
     width: 80%;
-    height: 80%;
+    height: 60%;
     border-radius: 10px;
     resize: none;
     outline: none;
@@ -42,5 +43,38 @@
     -webkit-backdrop-filter: blur(10px) saturate(100%);
     background-color: rgba(255, 255, 255, 0.4);
     box-shadow: 0 0 10px $violet-darkest;
+  }
+  button {
+    @include center-absolute;
+    top: 75%;
+    left: 75%;
+    border-radius: 10px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    width: 100px;
+    padding: 2px;
+    // width: fit-content;
+    align-self: center;
+    border-color: $violet-darkest;
+    color: $violet-darkest;
+    letter-spacing: 2px;
+    background: linear-gradient(
+      270deg,
+      $pink-darkest 0%,
+      $pink-base 70%,
+      $pink-lightest 100%
+    );
+    cursor: pointer;
+    transition: 1s;
+    background-size: 200px 1px;
+    border-width: 2px;
+    box-shadow: 0 0 10px $violet-darkest;
+  }
+  button:hover {
+    background-position: -100px;
+  }
+  .Delete {
+    left: 25%;
   }
 }

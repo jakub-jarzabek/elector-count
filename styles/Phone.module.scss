@@ -16,7 +16,8 @@
   height: 600px;
   background-color: black;
   @include phone-border-radius;
-  @include center-absolute;
+  position: relative;
+  margin: auto;
 }
 
 .PhoneScreen {

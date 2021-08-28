@@ -1,9 +1,9 @@
-import React, {useState, useRef, useEffect} from 'react'
-import {signIn, useSession} from 'next-auth/client'
+import React, { useRef, useEffect } from 'react'
+import { signIn, useSession } from 'next-auth/client'
 import Phone from '../components/Phone'
-import router, { useRouter } from 'next/router'
+import router from 'next/router'
 import styles from '../styles/Login.module.scss'
-
+import Header from '../components/Header'
 export default function Login() {
   const [session, loading] = useSession()
   useEffect(() => {
@@ -30,19 +30,22 @@ export default function Login() {
     }
   }
   return (
-    <Phone>
-      <form className={styles.LoginForm} onSubmit={handleSubmit}>
-        <label htmlFor="loginInput">Email:</label>
-        <input id="loginInput" type="text" required ref={emailInputRef} />
-        <label htmlFor="passwordInput">Password:</label>
-        <input
-          id="passwordInput"
-          type="password"
-          ref={passwordInputRef}
-          required
-        />
-        <button type="submit">Login</button>
-      </form>
-    </Phone>
+    <div className="CenterDiv">
+      <Header />
+      <Phone>
+        <form className={styles.LoginForm} onSubmit={handleSubmit}>
+          <label htmlFor="loginInput">Email:</label>
+          <input id="loginInput" type="text" required ref={emailInputRef} />
+          <label htmlFor="passwordInput">Password:</label>
+          <input
+            id="passwordInput"
+            type="password"
+            ref={passwordInputRef}
+            required
+          />
+          <button type="submit">Login</button>
+        </form>
+      </Phone>
+    </div>
   )
 }
