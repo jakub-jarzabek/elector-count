@@ -1,34 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Elector Count - messaging app
+Application used to communicate between two users created with Next.js and MongoDB
 
-## Getting Started
+# Technologies
+Project is created with the use of the following libraries:
+* next.js version: 11.1.0
+* axios version: 0.21.1
+* dot-env version: 0.0.1
+* express version: 4.17.1
+* jsonwebtoken version: 8.5.1
+* mongodb version: 4.1.1
+* mongoose version: 6.0.1
+* next-auth version: 3.29.0
+* node-fetch version: 2.6.1
+* react version: 17.0.2
+* react-dom version: 17.0.2
+* sass version: 1.38.1
 
-First, run the development server:
+# Setup
+To run this project, install it locally using yarn:
 
-```bash
-npm run dev
-# or
+```
+yarn install
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Create **.env.local** file inside of the **server** directory, which will contain database connection information and next-auth URL:
+```
+DB_CONNECTION = mongodb+srv://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]
+NEXTAUTH_URL=http://localhost:3000/
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```
+Insert document into the **users** collection inside your database:
+![image](https://drive.google.com/uc?export=view&id=1YB4_336jo7i1MiOdi1aiUA6yv5yCWu0T)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Now you can log in using those credentials at **http://localhost:3000**
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+# Live Example:
+Vercel live example can be found under this URL:
 
-## Learn More
+```
+https://elector-count.vercel.app/
+```
 
-To learn more about Next.js, take a look at the following resources:
+# Login
+Login credentials for vercel example:
+First user:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+Email: karl@franz.empire
+Password: SigmarCalls
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Second user:
 
-## Deploy on Vercel
+```
+Email: balthazar@gelt.empire
+Password: ForEmperor
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Creators
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Jakub Jarząbek https://github.com/jakub-jarzabek
+Kacper Reja https://github.com/nischuGit
