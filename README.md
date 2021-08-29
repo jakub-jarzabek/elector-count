@@ -58,6 +58,10 @@ Email: balthazar@gelt.empire
 Password: ForEmperor
 ```
 
+# Additional remarks
+* Refresh intervals are set to 10 seconds, thus messages will appear after refresh action is complete
+* We are planning to update our solution using WebSockets in order to achieve real-time communication
+
 # Creators
 
 Jakub Jarząbek https://github.com/jakub-jarzabek
