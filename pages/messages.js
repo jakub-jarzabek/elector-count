@@ -15,7 +15,7 @@ const Messages = ({ messages, session }) => {
           setMessagesState(response.data)
         }
       })
-    }, 10000)
+    }, 30000)
     return () => clearInterval(interval)
   }, [])
   const [messagesState, setMessagesState] = useState(messages)

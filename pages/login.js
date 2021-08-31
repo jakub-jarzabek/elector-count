@@ -31,6 +31,12 @@ export default function Login() {
     if (!result.error) {
       router.replace('/messages')
       setDisplay('none')
+    } else if (result.error === 'No user with the email') {
+      alert('There is no such user')
+      setDisplay('none')
+    } else {
+      alert('incorrect password')
+      setDisplay('none')
     }
   }
   return (
