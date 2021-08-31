@@ -1,5 +1,6 @@
 # Elector Count - messaging app
-Application used to communicate between two users created with Next.js and MongoDB
+Application used to communicate between two users created with Next.js and MongoDB with ultimate SynthWave theme ;)
+
 
 # Technologies
 Project is created with the use of the following libraries:
@@ -15,6 +16,8 @@ Project is created with the use of the following libraries:
 * react version: 17.0.2
 * react-dom version: 17.0.2
 * sass version: 1.38.1
+* socket.io: 4.2.0 only for socket_implementation branch)
+* socket.io-client: 4.2.0 (only for socket_implementation branch)
 
 # Setup
 To run this project, install it locally using yarn:
@@ -36,11 +39,26 @@ Insert document into the **users** collection inside your database:
 Now you can log in using those credentials at **http://localhost:3000**
 
 # Live Example:
-Vercel live example can be found under this URL:
+Heroku live example created with socket.io can be found under this URL:
+```
+https://elector-count-socket.herokuapp.com/
+```
+Branch containing source code for real-time version can be found here:
+
+```
+https://github.com/jakub-jarzabek/elector-count/tree/socket_implementation
+```
+
+
+Vercel live example can be found under this URL(outdated version with no real-time communication):
 
 ```
 https://elector-count.vercel.app/
 ```
+
+Additional remarks for Vercel version (main branch)
+* Refresh intervals are set to 30 seconds, thus messages will appear after refresh action is complete
+* We are planning to update our solution using WebSockets in order to achieve real-time communication
 
 # Login
 Login credentials for vercel example:
@@ -57,14 +75,6 @@ Second user:
 Email: balthazar@gelt.empire
 Password: ForEmperor
 ```
-
-# Additional remarks
-* Refresh intervals are set to 30 seconds, thus messages will appear after refresh action is complete
-* We are planning to update our solution using WebSockets in order to achieve real-time communication
-
-# Live-Chat
-* Finished real-time communication app created with use of socket.io is avaible under socket_implemenation branch.
-* https://github.com/jakub-jarzabek/elector-count/tree/socket_implementation
 
 
 # Creators
