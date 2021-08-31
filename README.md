@@ -63,7 +63,9 @@ Password: ForEmperor
 * We are planning to update our solution using WebSockets in order to achieve real-time communication
 
 # Live-Chat
-* Finished real-time communication app created with use of socket.io is avaible under socketio_implemenation branch.
+* Finished real-time communication app created with use of socket.io is avaible under socket_implemenation branch.
+* https://github.com/jakub-jarzabek/elector-count/tree/socket_implementation
+
 
 # Creators
 
