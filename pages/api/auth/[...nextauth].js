@@ -34,5 +34,5 @@ export default NextAuth({
       },
     }),
   ],
-   //pages: { signIn: '../../login.js' },
+  //pages: { signIn: '../../login.js' },
 })
