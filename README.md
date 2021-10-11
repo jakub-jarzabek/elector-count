@@ -80,4 +80,4 @@ Password: ForEmperor
 # Creators
 
 Jakub Jarząbek https://github.com/jakub-jarzabek
-Kacper Reja https://github.com/nischuGit
+Kacper Reja https://github.com/kacper-reja
